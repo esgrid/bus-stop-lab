@@ -5,7 +5,7 @@ from src.person import Person
 class TestBusStop(unittest.TestCase):
     def setUp(self):
         self.bus_stop = BusStop("Waverly Station")
-        self.person = Person("Guido van Rossum", 64, 20)
+        self.person = Person("Guido van Rossum", 64, 20, "Waverly Station")
 
     # @unittest.skip("Delete this line to run the test")
     def test_bus_stop_has_name(self):

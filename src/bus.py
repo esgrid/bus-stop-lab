@@ -14,13 +14,25 @@ class Bus:
 
     def pick_up_passenger(self, passenger):
         self.passengers.append(passenger)
+        self.capacity -= 1
 
     def drop_passenger(self, passenger):
         self.passengers.remove(passenger)
+        self.capacity += 1
     
     def empty_bus(self):
+        self.capacity += self.how_many_passengers()
         self.passengers = []
 
     def pick_up_from_stop(self, bus_stop):
-        self.passengers = [*self.passengers, *bus_stop.queue]
-        bus_stop.queue = 0
+        to_be_removed_passengers = []
+        if bus_stop.queue_length() <= self.capacity:
+            for passenger in bus_stop.queue:
+                if passenger.destination == self.destination:
+                    self.passengers.append(passenger)
+                    to_be_removed_passengers.append(passenger)
+            bus_stop.queue = [p for p in bus_stop.queue if p not in to_be_removed_passengers]
+
+            # self.passengers = [*self.passengers, *bus_stop.queue]
+            # bus_stop.queue = 0
+        

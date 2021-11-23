@@ -3,7 +3,7 @@ from src.person import Person
 
 class TestPerson(unittest.TestCase):
     def setUp(self):
-        self.person = Person("Guido van Rossum", 64, 20)
+        self.person = Person("Guido van Rossum", 64, 20, "Waverly Station")
 
     # @unittest.skip("Delete this line to run the test")
     def test_person_has_name(self):
