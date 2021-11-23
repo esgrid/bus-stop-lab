@@ -4,3 +4,6 @@ class Person:
         self.age = age
         self.cash = cash
         self.destination = destination
+
+    def pay_cash(self, price):
+        self.cash -= price
