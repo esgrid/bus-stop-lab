@@ -28,8 +28,8 @@ class Bus:
         to_be_removed_passengers = []
         if bus_stop.queue_length() <= self.capacity:
             for passenger in bus_stop.queue:
-                if passenger.destination == self.destination:
-                    self.passengers.append(passenger)
+                if passenger.destination == self.destination and passenger.cash >= self.price:
+                    self.pick_up_passenger(passenger)
                     to_be_removed_passengers.append(passenger)
             bus_stop.queue = [p for p in bus_stop.queue if p not in to_be_removed_passengers]
 
